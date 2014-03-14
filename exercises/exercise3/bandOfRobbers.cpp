@@ -44,7 +44,7 @@ class BankRobbers
 
     public:
     
-		BankRobbers ();
+        BankRobbers ();
         BankRobbers (const BankRobbers &b);
         BankRobbers &operator= (const BankRobbers &b);
 
