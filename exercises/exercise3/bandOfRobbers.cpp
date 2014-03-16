@@ -43,7 +43,8 @@ class BankRobbers
         }
 
     public:
-		BankRobbers ();
+    
+        BankRobbers ();
         BankRobbers (const BankRobbers &b);
         BankRobbers &operator= (const BankRobbers &b);
 
@@ -52,40 +53,22 @@ class BankRobbers
         void addRobber();					// Adds a newly created roobber to the group if not full
         
         
-        void setName (char* na, int index)
-        {
-            strcpy(group[index].name,na);
-        }
-        void setRate (double r, int index)
-        {
-            group[index].rate = r;
-        }
-        void setInPrison (bool p, int index)
-        {
-            group[index].inPrison = p;
-        }
+        void setName (char* na, int index) { strcpy(group[index].name,na);  }
+        void setRate (double r, int index) { group[index].rate = r; }
+        void setInPrison (bool p, int index) { group[index].inPrison = p; }
 	//---- End Of Mutators -------
 	
 	
-        const char *getName (int index)
-        {
-            return group[index].name;
-        }
-        double getRate (int index) const
-        {
-            return group[index].rate;
-        }
-        bool getInPrison (int index) const
-        {
-            return group[index].inPrison;
-        }
+        const char *getName (int index) { return group[index].name; }
+        double getRate (int index) const { return group[index].rate; }
+        bool getInPrison (int index) const { return group[index].inPrison; }
 
         void print () const;
         
 };
 
 // --- Constructors ----
-BankRobbers::BankRobbers() : size(0), maxLoot(0) {}	// Nekvi shashmi tuka (vijte si uchebnika
+BankRobbers::BankRobbers() : size(0), maxLoot(0) {}	// Nekvi shashmi tuka (vijte si uchebnika)
 
 BankRobbers::BankRobbers (const BankRobbers &b) : size(b.size), maxLoot(b.maxLoot)
 {
