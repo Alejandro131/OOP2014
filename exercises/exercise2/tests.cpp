@@ -9,7 +9,7 @@ int main()
 	{
 	cout << "Select test:\n"
 		 << "s - for tests for student\n"
-		 << "g - for tests for group\n >> ";
+		 << "g - for tests for group\n>> ";
 	cin >> choise;
 	}while(choise != 's' && choise != 'g');
 	cin.get(); // Clearing the buffer
@@ -51,18 +51,25 @@ int main()
 	else
 	{
 		Group group(students, 3);
-		group.print();
-		cin.get(); // Pauses
 		
 		group.studHighestGrades();
 		group.studLowestGrades();
 		group.studentByFacNum(53453);
 		
 		cout << "Avarage marks : " << group.averageMarks() << endl;
+		cout << "\t--- Before sort ---\n";
+		cin.get(); // Pauses
+		group.print();
+		cout << "\t --- After the sort by facult number ---\n";
+		
+		cin.get(); // Pauses
 		group.sortStudByFacNum();
 		group.print();
+		cout << "\t --- After the sort by marks ---\n";
+		cin.get(); // Pauses
 		group.sortStudByMarks();
 		group.print();
+		
 	}
 	
 	return 0;

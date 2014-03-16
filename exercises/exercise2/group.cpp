@@ -6,7 +6,7 @@ using namespace std;
 class Group
 {
 public:
-	Group(const student* studens, short groupSize)
+	Group(const student* students, short groupSize)
 	{
 		for(int i = 0 ; i<groupSize ; i++)
 		{
@@ -107,15 +107,27 @@ void Group::sortStudents()
 
 void Group::sortStudByFacNum()
 {
+	int j;
+	student tempStudent;
 	for(int i = 1 ; i < groupSize ; i++)
-		for(int j = i ; i>0 && students[j].facNum>students[j-1].facNum ; j--)
-			swap(students[j], students[j-1]);
+	{	
+		tempStudent = students[i];
+		for(j = i ; j>0 && tempStudent.facNum>students[j-1].facNum ; j--)
+			students[j] = students[j-1];
+		students[j] = tempStudent;
+	}
 }
-
+  
 void Group::sortStudByMarks()
 {
-		for(int i = 1 ; i < groupSize ; i++)
-			for(int j = i ; i>0 && students[j].marks>students[j-1].marks ; j--)
-				swap(students[j], students[j-1]);
+	int j;
+	student tempStudent;
+	for(int i = 1 ; i < groupSize ; i++)
+	{	
+		tempStudent = students[i];
+		for(j = i ; j>0 && tempStudent.marks>students[j-1].marks ; j--)
+			students[j] = students[j-1];
+		students[j] = tempStudent;
+	}
 }
 
