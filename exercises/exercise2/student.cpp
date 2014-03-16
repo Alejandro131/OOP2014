@@ -8,6 +8,18 @@ struct student
 	char name[41];
 	double marks;
 
+	student& operator=(const student& other) 
+		// A bit cheeting
+	{
+		if(this != &other)
+		{
+			facNum = other.facNum;
+			marks = other.marks;
+			strcpy(name, other.name);
+		}
+		return *this;
+	}
+	
 	void set_name(const char* _name){  strcpy(name, _name);  }
 	void set_marks(double _marks)
 	{
@@ -52,26 +64,3 @@ struct student
 			 << "Marks : " << marks << "\n\n";
 	}
 };
-
-int main()
-{
-	student zeroStud, firstStudent, secondStudent;
-	
-	zeroStud.set_name("Gosho");
-	zeroStud.set_facNum(53452);
-	zeroStud.set_marks(7);
-	zeroStud.print();
-	
-	zeroStud.set_marks(5.3);
-	zeroStud.print();
-	
-	firstStudent.read();
-	firstStudent.print();
-	firstStudent.set_marks(5.6);
-	
-	secondStudent.read();
-	secondStudent.print();
-	
-	
-	return 0;
-}

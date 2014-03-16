@@ -1,15 +1,3 @@
-/*
-Да се дефинира клас group, който да има масив от студенти (с максимална дължина 30) 
-за член данна и реализира операции за:
-
-Намиране на среден успех на групата
-Извеждане на студент с максимален/минимален успех
-Извеждане на студент по зададен факултетен номер
-Сортиране на студентите по факултетни номера
-Сортиране на студентите по успех
-Извеждане на всички студенти
-*/
-
 #include<iostream>
 #include<cstring>
 #include "student.cpp"
@@ -18,8 +6,19 @@ using namespace std;
 class Group
 {
 public:
+	Group(const student* studens, short groupSize)
+	{
+		for(int i = 0 ; i<groupSize ; i++)
+		{
+			this->students[i] = students[i];
+		}
+		this->groupSize = groupSize;
+	}
+
 
 	void sortStudents(); // Sorts the students by the choosen field
+	void sortStudByFacNum(); // function for sorting
+	void sortStudByMarks();	 // function for sorting
 	
   //--- Get Functions ---
 	void studHighestGrades() const;
@@ -27,13 +26,14 @@ public:
 	void studentByFacNum(unsigned _facNum) const;
 	void print() const;
 	double averageMarks() const;
+	
+	short getGroupSize() const { return groupSize; }
+	const student* getStudents() const { return students; }
   //--- End Get Functions ---
 	
 private:
 	student students[30];
 	short groupSize;
-	
-	void sortStudByField(bool sortChoise); // Hidden function for sorting
 };
 
 double Group::averageMarks() const
@@ -102,21 +102,20 @@ void Group::sortStudents()
 			 << "2) m - sort by marks";
 		cin >> choise;
 	}while(choise != 'f' && choise != 'm');
-	choise == 'f' ? sortStudByField(1):sortStudByField(0);
+	choise == 'f' ? sortStudByFacNum():sortStudByMarks();
 }
 
-void Group::sortStudByField(bool choise)
+void Group::sortStudByFacNum()
 {
-	if(choise)
-	{
-		for(int i = 1 ; i < groupSize ; i++)
-			for(int j = i ; i>0 && students[j].facNum>students[j-1].facNum ; j--)
-				swap(students[j], students[j-1]);
-	}
-	else
-	{
-		for(int i = 1 ; i < groupSize ; i++)
-			for(int j = i ; i>0 && students[j].facNum>students[j-1].facNum ; j--)
-				swap(students[j], students[j-1]);
-	}
+	for(int i = 1 ; i < groupSize ; i++)
+		for(int j = i ; i>0 && students[j].facNum>students[j-1].facNum ; j--)
+			swap(students[j], students[j-1]);
 }
+
+void Group::sortStudByMarks()
+{
+		for(int i = 1 ; i < groupSize ; i++)
+			for(int j = i ; i>0 && students[j].marks>students[j-1].marks ; j--)
+				swap(students[j], students[j-1]);
+}
+
