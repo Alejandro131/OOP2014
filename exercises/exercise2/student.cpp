@@ -17,7 +17,11 @@ struct student
 			marks = other.marks;
 			strcpy(name, other.name);
 		}
-		return *this;
+		student* nov = new student();
+		nov->set_name(name);
+		nov->set_facNum(facNum);
+		nov->set_marks(marks);
+		return *nov;
 	}
 	
 	void set_name(const char* _name){  strcpy(name, _name);  }
@@ -64,3 +68,18 @@ struct student
 			 << "Marks : " << marks << "\n\n";
 	}
 };
+
+int main()
+{
+	student x,y,z;
+	x.set_name("gas");
+	x.set_facNum(4243);
+	x.set_marks(4);
+	
+	x.print();
+	z = y = x;
+	
+	y.print();
+	z.print();
+	return 0;
+}
