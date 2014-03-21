@@ -4,10 +4,10 @@
 
 Решенията на задачите се предават по e-mail на следните адреси:
 
-> Група 1 - KN13.14.1.1@gmail.com
-> Група 2 - kn201317@gmail.com
-> Група 3 - lachezarstoev93@gmail.com | ts.kandilarova@gmail.com
-> Група 4 - kn4_1314@abv.bg
+* Група 1 - KN13.14.1.1@gmail.com
+* Група 2 - kn201317@gmail.com
+* Група 3 - lachezarstoev93@gmail.com | ts.kandilarova@gmail.com
+* Група 4 - kn4_1314@abv.bg
 
 Срок за предаване: 14.04.2014 - 21.04.2014
 
