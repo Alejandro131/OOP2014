@@ -38,6 +38,8 @@
   * `get_nickname`
   * `get_score`
   * `add_score` - добавя сума към баланса
+  * `print_player` - връща низ състоящ се от : `name` + " the " + `nickname`
+
 #####Не са необходими set методи.
 
 * Всяка изиграна игра се характеризира с обект от `class MoneyStream` с атрибути:
