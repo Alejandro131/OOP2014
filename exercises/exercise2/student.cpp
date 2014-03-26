@@ -53,17 +53,17 @@ struct student
 	}
 };
 
-// int main()
-// {
-// 	student x,y,z;
-// 	x.set_name("gas");
-// 	x.set_facNum(4243);
-// 	x.set_marks(4);
+int main()
+{
+	student x,y,z;
+	x.set_name("gas");
+	x.set_facNum(4243);
+	x.set_marks(4);
 
-// 	x.print();
-// 	z = y = x;
+	x.print();
+	z = y = x;
 
-// 	y.print();
-// 	z.print();
-// 	return 0;
-// }
+	y.print();
+	z.print();
+	return 0;
+}
