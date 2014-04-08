@@ -84,35 +84,3 @@ int main()
   return 0;
 }
 ```
-
-A(7, 2)
-A(const&)
-8 4
-A(const&)
-A(1, 2)
-A(const&)
-B(2.3, 7, 29, 6)
-A(const&)
-A(const&)
-A(const&)
-A(const B&)
-2.3
-9 6
-11 10
-Резултат:
-
-A(7, 2)
-A(const&)
-8 4
-A(const&)
-A(1, 2)
-A(const&)
-B(2.3, 7, 29, 6)
-A(const&)
-A(const&)
-A(const&)
-A(const B&)
-2.3
-9 6
-11 10
-```
