@@ -1,2 +1,5 @@
 *.o
 *.exe
+GNUmakefile
+makefile
+Makefile
