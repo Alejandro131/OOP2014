@@ -1,91 +1,61 @@
 #include <iostream>
 #include <cstring>
+
 using namespace std;
 
 class Smartphone
 {
-    private:
-        char model[21];
-        double price;
-        char os[21];
-        
-    public:
-    //---- Constructors ---------
-        Smartphone(const char* m = " ", double p = 0.0,const char* o = "symbian");
-        Smartphone(const Smartphone &s);
-        Smartphone& operator=(const Smartphone &s);
+public:
+    Smartphone(const char* _model="", double _price=0.0,
+               const char* _os="symbian")
+    {
+        strcpy(model, _model);
+        price = _price;
+        strcpy(os, _os);
+    }
 
-	//---- End of Constructors ----------
-	
-	//---- Mutators --------
-        void setModel(char *m)
-        {
-            strcpy(model,m);
-        }
-        void setPrice(double p)
-        {
-            price = p;
-        }
+    void setModel(char* _model)
+    {
+        strcpy(model, _model);
+    }
+    void setPrice(double _price)
+    {
+        price = _price;
+    }
 
-        void setOs (char *o)
-        {
-            strcpy (os,o);
-        }
-	//---- End Of Mutators --------
-	
-	//---- Get functions --------
-        const char* getModel() const
-        {
-            return model;
-        }
-        double getPrice () const
-        {
-            return price;
-        }
+    void setOs(char* _os)
+    {
+        strcpy(os, _os);
+    }
 
-        const char* getOs () const
-        {
-            return os;
-        }
-	//---- End of Get functions
-	
-        void print () const;
+    const char* getModel() const
+    {
+        return model;
+    }
+    double getPrice() const
+    {
+        return price;
+    }
+
+    const char* getOs() const
+    {
+        return os;
+    }
+
+    void print() const
+    {
+         cout << "Model: " << model << endl
+              << "Price: " << price << endl
+              << "OS: "    << os    << endl;
+    }
+
+private:
+    double price;
+    char model[21];
+    char os[21];
 };
 
-Smartphone :: Smartphone (const char *m, double p,const char *o)
-{
-    strcpy (model,m);
-    price = p;
-    strcpy (os, o);
-}
-
-Smartphone :: Smartphone (const Smartphone &s)
-{
-    strcpy (model,s.model);
-    price = s.price;
-    strcpy (os, s.os);
-}
-
-Smartphone &Smartphone:: operator= (const Smartphone &s)
-{
-    if (this != &s)
-    {
-        strcpy (model,s.model);
-        price = s.price;
-        strcpy (os, s.os);
-    }
-    return *this;
-}
-
-void Smartphone:: print () const
-{
-     cout << "Model: " << model << endl
-          << "Price: " << price << endl
-          << "OS: " << os << endl << endl;
-}
-
-
-void sortByPrice (Smartphone *s, int n)
+void sortByPrice (Smartphone* s, int n)
 {
     for (int i = 0; i < n - 1; i ++)
     {
@@ -101,8 +71,7 @@ void sortByPrice (Smartphone *s, int n)
 
         if (index != i)
         {
-            Smartphone temp;
-            temp = s[i];
+            Smartphone temp = s[i];
             s[i] = s[index];
             s[index] = temp;
         }
@@ -110,7 +79,10 @@ void sortByPrice (Smartphone *s, int n)
 }
 int main ()
 {
-    Smartphone n("Nokia",650,"windows"), s("Samsung", 500, "Android"), i("iPhone",700,"iOS");
+    Smartphone n("Nokia",650,"windows");
+    Smartphone s("Samsung", 500, "Android");
+    Smartphone i("iPhone",700,"iOS");
+
     Smartphone t[3] = {n,s,i};
 
     sortByPrice(t,3);
@@ -121,5 +93,6 @@ int main ()
 
     for (int k = 0; k < 3; k++)
         t[k].print();
+
     return 0;
 }
