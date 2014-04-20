@@ -43,7 +43,7 @@ class BankRobbers
         }
 
     public:
-    
+
         BankRobbers ();
         BankRobbers (const BankRobbers &b);
         BankRobbers &operator= (const BankRobbers &b);
@@ -51,20 +51,20 @@ class BankRobbers
 	//---- Mutators -------
 		void addRobber (const robber &r);	// Adds the given robber to the group if the group isn't full
         void addRobber();					// Adds a newly created roobber to the group if not full
-        
-        
+
+
         void setName (char* na, int index) { strcpy(group[index].name,na);  }
         void setRate (double r, int index) { group[index].rate = r; }
         void setInPrison (bool p, int index) { group[index].inPrison = p; }
 	//---- End Of Mutators -------
-	
-	
+
+
         const char *getName (int index) { return group[index].name; }
         double getRate (int index) const { return group[index].rate; }
         bool getInPrison (int index) const { return group[index].inPrison; }
 
         void print () const;
-        
+
 };
 
 // --- Constructors ----
