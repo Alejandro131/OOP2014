@@ -6,17 +6,15 @@ using namespace std;
 class Car
 {
 public:
-    Car()
+    Car():
+        year(0), price(0.0)
     {
-        year = 0;
-        price = 0.0;
         strcpy(model," ");
     }
 
-    Car(int _year, const char* _model, double _price)
+    Car(int _year, const char* _model, double _price):
+        year(_year), price(_price)
     {
-        year = _year;
-        price = _price;
         strcpy(model, _model);
     }
 

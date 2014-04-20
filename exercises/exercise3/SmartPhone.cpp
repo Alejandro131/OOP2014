@@ -6,11 +6,12 @@ using namespace std;
 class Smartphone
 {
 public:
-    Smartphone(const char* _model="", double _price=0.0,
-               const char* _os="symbian")
+    Smartphone(const char* _model="",
+               double _price=0.0,
+               const char* _os="symbian"):
+        price(_price)
     {
         strcpy(model, _model);
-        price = _price;
         strcpy(os, _os);
     }
 
