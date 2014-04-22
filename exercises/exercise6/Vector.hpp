@@ -18,7 +18,6 @@ public:
 
     Vector& operator=(const Vector&);
 
-    unsigned size() const;
     T operator[](unsigned) const;
 
     void pushBack(const T&);
@@ -26,6 +25,8 @@ public:
     void insertAt(unsigned, const T&);
     void removeAt(unsigned);
 
+    unsigned size() const;
+    bool empty() const;
     bool elementExists(const T&) const;
 
     friend ostream& operator<<<T>(ostream&, const Vector&);
@@ -71,11 +72,6 @@ Vector<T>& Vector<T>::operator=(const Vector<T>& other)
     }
 
     return *this;
-}
-template <typename T>
-unsigned Vector<T>::size() const
-{
-    return _size;
 }
 
 template <typename T>
@@ -150,6 +146,18 @@ void Vector<T>::removeAt(unsigned index)
     }
 
     --_size;
+}
+
+template <typename T>
+unsigned Vector<T>::size() const
+{
+    return _size;
+}
+
+template <typename T>
+bool Vector<T>::empty() const
+{
+    return _size == 0;
 }
 
 template <typename T>
