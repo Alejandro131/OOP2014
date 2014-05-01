@@ -86,11 +86,8 @@ const T& LinkedList<T>::getAt(unsigned index) const
 template <typename T>
 void LinkedList<T>::insertAtBeginning(const T& item)
 {
-    Node* newNode = new Node(item);
-
-    newNode->next = start;
+    Node* newNode = new Node(item, start);
     start = newNode;
-
     ++size;
 }
 
@@ -115,9 +112,7 @@ void LinkedList<T>::insertBefore(unsigned index, const T& item)
     else
     {
         Node* previous = lookUp(index - 1);
-        Node* newNode  = new Node(item);
-
-        newNode->next  = previous->next;
+        Node* newNode  = new Node(item, previous->next);
         previous->next = newNode;
 
         ++size;
@@ -133,9 +128,7 @@ void LinkedList<T>::insertAfter(unsigned index, const T& item)
     }
 
     Node* previous = lookUp(index);
-    Node* newNode  = new Node(item);
-
-    newNode->next  = previous->next;
+    Node* newNode  = new Node(item, previous->next);
     previous->next = newNode;
 
     ++size;
@@ -231,8 +224,8 @@ void LinkedList<T>::copy(const LinkedList<T>& other)
 
     while (iterOther != 0)
     {
-        Node* newNode = new Node(iterOther->data);
-        iterThis->next   = newNode;
+        Node* newNode  = new Node(iterOther->data);
+        iterThis->next = newNode;
 
         iterThis  = newNode;
         iterOther = iterOther->next;
