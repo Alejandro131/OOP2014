@@ -213,11 +213,10 @@ void LinkedList<T>::copy(const LinkedList<T>& other)
     if (other.start == 0)
     {
         start = 0;
+        return;
     }
-    else
-    {
-        start = new Node(other.start->data);
-    }
+
+    start = new Node(other.start->data);
 
     Node* iterThis  = start;
     Node* iterOther = other.start->next;
