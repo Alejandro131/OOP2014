@@ -1,115 +1,76 @@
-#include <iostream>
-#include <cstring>
+#include "Product.h"
 
-#include "Product.hpp"
+Product::Product() : name(NULL), quantity(0), price(0){}
 
-using namespace std;
-
-Product::Product():
-    weight(0), price(0), barcode(0)
+Product::Product(char* n, int q, double p) : name(NULL)
 {
-    name = new char[1];
-    name[0] = '\0';
+    if(n!=NULL)
+    {
+        SetName(n);
+        SetPrice(p);
+        SetQuantity(q);
+    }
 }
-
-Product::Product(const char* _name,
-                 double _weight,
-                 double _price,
-                 int _barcode):
-    weight(_weight), price(_price), barcode(_barcode)
+Product::Product(const Product& other) : name(NULL)
 {
-    name = new char[strlen(_name) + 1];
-    strcpy(name, _name);
+    if(other.name!=NULL)
+    {
+        SetName(other.name);
+        SetPrice(other.price);
+        SetQuantity(other.quantity);
+    }
 }
-
-Product::Product(const Product& other)
-{
-    copy(other);
-}
-
 Product::~Product()
 {
-    del();
-}
-
-Product& Product::operator=(const Product& other)
-{
-    if (this != &other)
+    if(name!=NULL)
     {
-        del();
-        copy(other);
+        delete [] name;
     }
-
-    return *this;
 }
-
 const char* Product::getName() const
 {
     return name;
 }
-
-double Product::getWeight() const
+int Product::getQuantity() const
 {
-    return weight;
+    return quantity;
 }
-
 double Product::getPrice() const
 {
     return price;
 }
-
-int Product::getBarcode() const
+void Product::SetName(char* n)
 {
-    return barcode;
+    if(name!=NULL)
+    {
+        delete[] name;
+    }
+    name = new char[strlen(n)+1];
+    assert(name!=NULL);
+    strcpy(name,n);
+}
+void Product::SetQuantity(int q)
+{
+    if(q>=0)
+    {
+        quantity = q;
+    }
+}
+void Product::SetPrice(double p)
+{
+    if(p>=0)
+    {
+        price = p;
+    }
 }
 
-void Product::setName(const char* _name)
+Product& Product::operator=(const Product& other)
 {
-    delete[] name;
-
-    name = new char[strlen(_name) + 1];
-    strcpy(name, _name);
-}
-
-void Product::setWeight(double _weight)
-{
-    weight = _weight;
-}
-
-void Product::setPrice(double _price)
-{
-    price = _price;
-}
-
-void Product::setBarcode(int _barcode)
-{
-    barcode = _barcode;
-}
-
-void Product::print() const
-{
-    cout << "Name: "    << name    << endl
-         << "Weight: "  << weight  << endl
-         << "Price: "   << price   << endl
-         << "Barcode: " << barcode << endl;
-}
-
-bool Product::operator<(const Product& other) const
-{
-    return price < other.price;
-}
-
-void Product::copy(const Product& other)
-{
-    weight  = other.weight;
-    price   = other.price;
-    barcode = other.barcode;
-
-    name = new char[strlen(other.name) + 1];
-    strcpy(name, other.name);
-}
-
-void Product::del()
-{
-    delete[] name;
+    if(this != &other)
+    {
+        SetName(other.name);
+        SetPrice(other.price);
+        SetQuantity(other.quantity);
+    }
+    return *this;
 }
